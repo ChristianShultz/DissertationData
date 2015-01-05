@@ -7,6 +7,9 @@ Get["jlabColors`"];
 
 P0mp::usage = "[rounding radius, scatter, xpos, xw ] 0-+";
 
+(* negative parity *)
+PA1mP::usage =  "[rounding radius, scatter, xpos, xw ] A1mP";
+
 scaleFactorMeV::usage = "scale to physical units";
 scaleFactorGeV::usage = "scale to physical units";
 
@@ -38,13 +41,13 @@ UnidentColor = jlabDarkGray;
 
 (* neg parity *) 
 
-l0mp = {{0.148382, 0.000125406 , SwaveColor}, 
+lA1mP = {{0.148382, 0.000125406 , SwaveColor}, 
 		{0.36834, 0.00141064,SwaveColor}, 
 		{ 0.456327, 0.00254573,HybridColor}}; 
 
 
 
-P0mp[r_,s_,x_,xw_] := ScatterList[l0mp,r,s,x,xw];
+PA1mP[r_,s_,x_,xw_] := ScatterList[lA1mP,r,s,x,xw];
 
 End[]
 EndPackage[]

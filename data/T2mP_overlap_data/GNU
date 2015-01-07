@@ -8,11 +8,11 @@ set style histogram errorbars gap 5 lw 1
 set style line 1 lc rgb "#228B22" 
 set style line 2 lc rgb "#228B22" 
 set style line 3 lc rgb "#7FFF00" 
-set style line 4 lc rgb "#7FFF00" 
+set style line 4 lc rgb "blue" 
 set style line 5 lc rgb "blue" 
-set style line 6 lc rgb "blue" 
+set style line 6 lc rgb "#1E90FF" 
 set style line 7 lc rgb "gold" 
 set style increment user
 set xtics scale 0
-plot '/tmp/histo_698.data' using 2:3:xtic(1) ti col, '' using 4:5 ti col, '' using 6:7 ti col, '' using 8:9 ti col, '' using 10:11 ti col, '' using 12:13 ti col, '' using 14:15 ti col
+plot '/tmp/histo_980.data' using 2:3:xtic(1) ti col, '' using 4:5 ti col, '' using 6:7 ti col, '' using 8:9 ti col, '' using 10:11 ti col, '' using 12:13 ti col, '' using 14:15 ti col
  pause -1

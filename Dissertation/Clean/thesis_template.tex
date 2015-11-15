@@ -1,0 +1,117 @@
+\tolerance=10000
+
+\documentclass[12pt]{report}
+
+%This package is built on the LaTeX2e report class, so any other packages which are
+%also compatible with it can also be used in combination with it.  ODUthesis should
+%be in the directory in which you are working, or in one of the standard input directories
+%for the TeX installation on your system.
+
+\usepackage{ODUthesis}
+
+%This package causes the first line of a section to be indented as required by the dissertation guide.
+\usepackage{color}
+\usepackage{indentfirst}
+
+%%%%%Other LaTeX2e packages such as the AMS fonts and graphics packages can be included here.
+
+%This style follows conventions used in Physical Review C. The names of figures, tables and captions can
+%be changed by using the commands below with appropriate changes. For example, "FIG." could be replaced by
+%"Fig." or "Figure" to change the labeling of figure captions.
+
+%\renewcommand{\figurename}{FIG.}
+%\renewcommand{\tablename}{TABLE}
+%\renewcommand{\bibname}{BIBLIOGRAPHY}
+
+
+
+\begin{document}
+
+\title{Thesis/Dissertation title goes here}
+
+\author{Author's name goes here}
+\principaladviser{advisor's name goes here}
+\member{member 1}  %This command produces a signature line for the specified member on the
+\member{member 2}  %title page. Use on instance of this command for each member of the
+                   %committee other than the advisor up to a total of 5 members.
+
+\degrees{description of previous degrees goes here}
+
+\dept{department name goes here}          %for example \dept{physics}
+
+\submitdate{month that the degree is to be awarded}
+
+%\phdfalse          %produces language on title page for Masters Thesis. Otherwise the default
+                    %is for a Ph.D. dissertation.
+
+%\copyrightfalse    %suppresses copyright notice
+
+%\figurespagefalse  %suppresses List of Figures
+
+%\tablespagefalse   %suppresses List of Tables
+
+\vita{The text of the Vita goes here.}
+
+
+\abstract{text of abstract goes here}
+
+\beforepreface
+
+\prefacesection{Acknowledgements}
+
+    %text of Acknowledgements goes here
+    %any other preface section is inserted similarly by the command
+    %\prefacesection{Section Title}
+
+\afterpreface
+
+    %The text of the thesis/dissertation begins here. The basic organization is
+    %in chapters, sections, subsections. 
+
+\chapter{}
+
+\section{}
+
+\subsection{}
+
+\begin{figure}
+\caption{bar}
+\end{figure}
+
+
+  %This begins the list of reference or bibliography. The default form is consistent
+  %with the references in the Physical Review. The articles must be listed in the order
+  %in which they appear in the text. The style of the bibliography can be changed and
+  %automatic ordering of the entries can be accomplished using BibTeX. Use of BibTeX is
+  %explained in most of the standard LaTeX books.
+
+\begin{thebibliography}{99}
+
+\addtocontents{toc}{\vspace*{12pt}}  %This command adds some extra space in the table of
+                                     %contents
+\addcontentsline{toc}{chapter}{BIBLIOGRAPHY}  %This command adds and entry for the
+                                              %bibliography in the table of contents
+
+\bibitem{brownjackson-ref}  G.~E.~Brown and A.~D.~Jackson, {\it The
+Nucleon--Nucleon Interaction} (North--Holland, Amsterdam, 1976).
+
+\end{thebibliography}
+
+%This command begins the Appendix section. The style of the chapter numbering is changed to
+%letters
+
+\appendix
+
+\chapter{}
+
+
+
+\newpage
+
+%The command below initiates printing of the vita page.  The name and other information is taken
+%from previous entries.
+
+\vitapage
+
+
+\end{document}

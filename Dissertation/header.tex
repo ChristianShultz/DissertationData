@@ -1,0 +1,102 @@
+\tolerance=10000
+\documentclass[12pt]{report}
+
+
+
+
+%This package is built on the LaTeX2e report class, so any other packages which are
+%also compatible with it can also be used in combination with it.  ODUthesis should
+%be in the directory in which you are working, or in one of the standard input directories
+%for the TeX installation on your system.
+
+
+
+%This package causes the first line of a section to be indented as required by the dissertation guide.
+\usepackage{indentfirst}
+
+%%%%%Other LaTeX2e packages such as the AMS fonts and graphics packages can be included here.
+\usepackage{graphicx}% Include figure files
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{bbold}
+\usepackage{slashed}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{tabularx}  %tables
+\usepackage{caption} %centering of captions
+
+
+
+
+
+
+
+%This style follows conventions used in Physical Review C. The names of figures, tables and captions can
+%be changed by using the commands below with appropriate changes. For example, "FIG." could be replaced by
+%"Fig." or "Figure" to change the labeling of figure captions.
+
+\renewcommand{\figurename}{Figure}
+\newcommand{\equationname}{Equation}
+\newcommand{\sectionname}{Section}
+\renewcommand{\tablename}{Table}
+\renewcommand{\appendixname}{Appendix}
+%\renewcommand{\bibname}{BIBLIOGRAPHY}
+
+%% functions 
+\newcommand{\figref}[1]{\figurename~\ref{#1}}
+\newcommand{\eqnref}[1]{\equationname~\ref{#1}}
+\newcommand{\secref}[1]{\sectionname~\ref{#1}}
+\newcommand{\tabref}[1]{\tablename~\ref{#1}}
+\newcommand{\appref}[1]{\appendixname~\ref{#1}}
+
+
+\newcommand{\estate}[1]{\ensuremath{\mathfrak{#1}}}
+\newcommand{\ecite}{ {\color{red}\bf{[CITE]}}}
+\newcommand{\fcite}[1]{ \ecite {\color{red}\bf{--#1}} }
+\newcommand{\trace}[1]{\ensuremath{\mathrm{Tr}\{#1\}}}
+
+\newcommand{\psibar}{\ensuremath{\bar{\psi}}}
+
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+  
+\newcommand{\pol}{\varepsilon}  % Polarisation vector/tensor symbol
+\newcommand{\Dic}{\text{Dic}}  % Dicyclic group
+\newcommand{\C}{\text{C}}
+
+
+
+%%%%%%%%%%%
+%\DeclareMathSizes{10}{18}{12}{8}   % For size 10 text
+%\DeclareMathSizes{11}{19}{13}{9}   % For size 11 text
+%\DeclareMathSizes{12}{20}{14}{10}  % For size 12 text
+
+%\DeclareMathSizes{10}{8}{6}{4}   % For size 10 text
+%\DeclareMathSizes{11}{8}{6}{4}   % For size 10 text
+%\DeclareMathSizes{12}{9}{7}{5}   % For size 10 text
+%%%%%%%%%%%
+
+\begin{document}
+
+
+
+%\chapter{}
+%\section{}
+%\subsection{}
+
+%\input{Outline}
+
+%\input{Introduction}
+%\input{lattice_gauge_thy}
+%\input{Spectroscopy}
+%\input{QM}
+%\input{RadiativeTransitionsQM}
+%\input{RadiativeTransitionsLattice}
+%\input{Conclusion}
+
+
+%\input{appendix}
+\input{appendix_Action}
+
+
+
+\end{document}

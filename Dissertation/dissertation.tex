@@ -1,0 +1,261 @@
+\tolerance=10000
+\documentclass[12pt]{report}
+%\documentclass[12pt]{revtex4-1}
+\usepackage{ODUthesis}
+
+
+
+%This package is built on the LaTeX2e report class, so any other packages which are
+%also compatible with it can also be used in combination with it.  ODUthesis should
+%be in the directory in which you are working, or in one of the standard input directories
+%for the TeX installation on your system.
+
+
+
+%This package causes the first line of a section to be indented as required by the dissertation guide.
+\usepackage{indentfirst}
+
+%%%%%Other LaTeX2e packages such as the AMS fonts and graphics packages can be included here.
+\usepackage{graphicx}% Include figure files
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bbold}
+\usepackage{slashed}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{tabularx}  %tables
+
+\usepackage{textcomp}
+\usepackage{afterpage}
+\usepackage{rotating}
+
+
+
+%\usepackage[justification=centering]{caption} %center captions
+\usepackage{caption} %dont center captions
+
+%\usepackage[numbers, square, comma, sort&compress]{natbib}
+%\usepackage[sort&compress,numbers]{natbib}
+%\usepackage{cite}
+%\usepackage[numbers]{natbib}
+
+\usepackage{natbib}
+%\setcitestyle{square,numbers,colon}
+
+%This style follows conventions used in Physical Review C. The names of figures, tables and captions can
+%be changed by using the commands below with appropriate changes. For example, "FIG." could be replaced by
+%"Fig." or "Figure" to change the labeling of figure captions.
+
+\renewcommand{\figurename}{Figure}
+\newcommand{\equationname}{Equation}
+\newcommand{\sectionname}{Section}
+\renewcommand{\tablename}{Table}
+\renewcommand{\appendixname}{Appendix}
+\renewcommand{\chaptername}{Chapter}
+%\renewcommand{\bibname}{BIBLIOGRAPHY}
+
+%% functions 
+\newcommand{\figref}[1]{\figurename~\ref{#1}}
+\newcommand{\eqnref}[1]{\equationname~\ref{#1}}
+\newcommand{\secref}[1]{\sectionname~\ref{#1}}
+\newcommand{\tabref}[1]{\tablename~\ref{#1}}
+\newcommand{\appref}[1]{\appendixname~\ref{#1}}
+\newcommand{\chapref}[1]{\chaptername~\ref{#1}}
+
+
+\newcommand{\estate}[1]{\ensuremath{\mathfrak{#1}}}
+\newcommand{\ecite}{ {\color{red}\bf{[CITE]}}}
+\newcommand{\fcite}[1]{ \ecite {\color{red}\bf{--#1}} }
+\newcommand{\trace}[1]{\ensuremath{\mathrm{Tr}\{#1\}}}
+
+\newcommand{\psibar}{\ensuremath{\bar{\psi}}}
+
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+  
+\newcommand{\pol}{\varepsilon}  % Polarisation vector/tensor symbol
+\newcommand{\Dic}{\text{Dic}}  % Dicyclic group
+\newcommand{\C}{\text{C}}
+
+
+
+%%%%%%%%%%%
+%\DeclareMathSizes{10}{18}{12}{8}   % For size 10 text
+%\DeclareMathSizes{11}{19}{13}{9}   % For size 11 text
+%\DeclareMathSizes{12}{20}{14}{10}  % For size 12 text
+
+%\DeclareMathSizes{10}{8}{6}{4}   % For size 10 text
+%\DeclareMathSizes{11}{8}{6}{4}   % For size 10 text
+%\DeclareMathSizes{12}{9}{7}{5}   % For size 10 text
+%%%%%%%%%%%
+
+
+
+
+% VITA STUFF SO I CAN COPY SOMETHING ELSE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{list1}{
+  \begin{list}{\ding{113}}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in} 
+      \setlength{\leftmargin}{0.17in}}}{\end{list}}
+\newenvironment{list2}{
+  \begin{list}{$\bullet$}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in} 
+      \setlength{\leftmargin}{0.2in}}}{\end{list}}
+
+
+\newcommand{\secskip}{\vspace*{-0.2mm}}
+\newcommand{\subsecskip}{\vspace*{-3mm}}
+
+%\newcommand{\myfigurespace}{\vspace*{3\baselineskip}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+\title{Meson Photo-couplings from Lattice Quantum Chromodynamics}
+
+\author{Christian J. P. Shultz}
+\principaladviser{Jozef J. Dudek}
+\member{Moskov Amaryan}  %This command produces a signature line for the specified member on the
+\member{Charles I. Sukenik}  %title page. Use on instance of this command for each member of the
+\member{J. W. Van Orden}                   %committee other than the advisor up to a total of 5 members.
+\member{Ruhai Zhou}
+
+\degrees{B.S. June 2008, Union College \\ M.S. December 2011, Old Dominion University}
+
+
+\dept{Physics}          %for example \dept{physics}
+
+\submitdate{May 2015}
+
+%\phdfalse          %produces language on title page for Masters Thesis. Otherwise the default
+                    %is for a Ph.D. dissertation.
+
+%\copyrightfalse    %suppresses copyright notice
+
+%\figurespagefalse  %suppresses List of Figures
+
+%\tablespagefalse   %suppresses List of Tables
+
+\vita{\section*{\sc Education}
+\begin{list1}\item[] \end{list1}
+\vspace*{-0.3in}
+{\bf Old Dominion University}, Norfolk, Virginia\\
+%{\em Department of Statistics} 
+\vspace*{-.1in}
+\begin{list1}
+\item[] Ph.D. Candidate, Theoretical Nuclear Physics (matriculation: April 2015)
+\vspace*{.05in}
+\item[] M.S., Physics,  May 2012
+\end{list1}
+\vspace*{0.2in}
+{\bf Union College}, Schenectady, New York\\
+%{\em Department of Mathematics and Statistics} 
+\vspace*{-.1in}
+\begin{list1}
+\item[] B.S., Physics,  June, 2008
+\end{list1}
+\vspace*{0.2in}
+\section*{\sc Honors and Awards} 
+\begin{list1}\item[] \end{list1}
+\vspace*{-0.3in}
+\begin{list1}
+\item[] Jefferson Science Associates Graduate Fellowship 2012-14 (2 year maximum)
+\item[] Union College: Seward Fellow, Presidential Scholar
+\end{list1}
+}
+
+
+\abstract{We explore the calculation of three-point functions featuring a vector current insertion in lattice Quantum Chromodynamics. These three-point functions, in general, contain information about many radiative transition matrix elements simultaneously. We develop and implement the technology necessary to isolate a single matrix element via the use of optimized operators, operators designed to interpolate a single meson eigenstate, which are constructed as variationally  optimized linear combination of meson interpolating fields within a large basis. In order to frame the results we also explore some well known phenomenology arising within the context of the constituent quark model before transitioning to a lattice calculation of the spectrum of isovector mesons in a version of QCD featuring three flavors of quarks all tuned to approximately the physical strange quark mass. We then proceed to calculate radiative transition matrix elements for the lightest few isovector pseudoscalar and vector particles. The dependence of these form factors and transitions on the photon virtuality is extracted and some model intuitions are explored. }
+
+\beforepreface
+
+\prefacesection{Acknowledgements}
+I would like to thank my fellow graduate students for the camaraderie, the faculty for patient instruction, the staff for all the happy memories, and most of all Jo whose support, vision, and instruction made this work possible. 
+
+    %text of Acknowledgements goes here
+    %any other preface section is inserted similarly by the command
+    %\prefacesection{Section Title}
+
+\afterpreface
+
+    %The text of the thesis/dissertation begins here. The basic organization is
+    %in chapters, sections, subsections. 
+
+%\chapter{}
+%\section{}
+%\subsection{}
+
+%\input{Outline}
+
+\input{Introduction}
+\input{QM}
+\input{RadiativeTransitionsQM}
+\input{lattice_gauge_thy}
+\input{Spectroscopy}
+\input{RadiativeTransitionsLattice}
+\input{Results}
+\input{Conclusion}
+
+
+  %This begins the list of reference or bibliography. The default form is consistent
+  %with the references in the Physical Review. The articles must be listed in the order
+  %in which they appear in the text. The style of the bibliography can be changed and
+  %automatic ordering of the entries can be accomplished using BibTeX. Use of BibTeX is
+  %explained in most of the standard LaTeX books.
+
+%%%%%%%%%%%%% OUT WITH THE OLD
+%\bibliographystyle{plain}
+%\begin{thebibliography}{99}
+%\addtocontents{toc}{\vspace*{12pt}}  %This command adds some extra space in the table of
+                                     %contents
+%\addcontentsline{toc}{chapter}{BIBLIOGRAPHY}  %This command adds and entry for the
+                                              %bibliography in the table of contents
+%\input{refs}
+%\end{thebibliography}
+
+%%%%%%%% this seems to cause the bib to mess itself up??
+\addtocontents{toc}{\vspace*{12pt}}  %This command adds some extra space in the table of
+                                     %contents
+\addcontentsline{toc}{chapter}{BIBLIOGRAPHY}  %This command adds and entry for the
+                                              %bibliography in the table of contents
+
+\bibliographystyle{plain}
+%\bibliographystyle{unsrt}
+%\bibliographystyle{unsrtnat}
+%\bibliographystyle{apsrev4-1}
+%\bibliographystyle{alpha}
+\bibliography{bib}
+
+
+
+
+%This command begins the Appendix section. The style of the chapter numbering is changed to
+%letters
+
+\appendix
+
+\input{appendix_Methods}
+\input{appendix_Spectroscopy}
+\input{appendix_Action}
+
+
+
+\newpage
+
+%The command below initiates printing of the vita page.  The name and other information is taken
+%from previous entries.
+
+\vitapage
+
+
+\end{document}

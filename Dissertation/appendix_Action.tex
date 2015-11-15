@@ -1,0 +1,66 @@
+\section{Clover Action} \label{app::Clover}
+The process of discretizing QCD onto a grid introduces errors, relative to the continuum action, which are polynomial in the lattice spacing, $a$. The process of systematically removing these effects,  order by order in $a$, is called \emph{improvement}.
+
+ For orientation it is useful to consider a finite difference derivative of some smooth function $f$. The forward difference derivative is defined as $f'(x) = \frac{1}{h}\left[f(x+h) - f(x)\right]$ and has an $\mathcal{O}(h)$ error relative to the continuous derivative. Another, slightly better, definition of a discretized derivative is the central difference derivative, $f'(x) = \frac{1}{2h}\left[ f(x+h) - f(x-h)\right]$. Here the error is $\mathcal{O}(h^2)$. The difference between the two discretizations and the observation that the central difference definition approaches the continuum value more quickly captures the essence of improvement. Simply put, we want to remove discretization error up to some order in the lattice spacing such that at finite lattice spacing the error introduced by computing QCD on a grid is removed to the desired accuracy. 
+
+On the lattice we will mainly be interested in improving the Euclidean action, 
+\begin{equation}
+\bar{\Psi} \left( m + \slashed{D} \right) \Psi.
+\end{equation}
+From an \emph{effective field theory} approach, improvement amounts to adding \emph{irrelevant}\footnote{In the context of QCD in four dimensions irrelevant operators are those which have mass dimension greater than four. $\bar{\psi}\sigma_{\mu\nu}F^{\mu\nu} \psi$ is an example of a dimension five operator while $(\bar{\psi}\psi)^2$ is a local dimension six operator. Dimension five operators can be used to eliminate $\mathcal{O}(a)$ effects, dimension six $\mathcal{O}(a^2)$. We will only concern ourselves with $\mathcal{O}(a)$ improvement. } operators to the action multiplied by powers of the spacing and coefficients chosen to cancel the discretization artifacts. Since these operators are multiplied by powers of $a$ they disappear as the continuum limit is taken ($a\rightarrow0$). 
+
+The lattice action we use \cite{Edwards:2008ja}, can be obtained by using the field transformation
+\begin{align}
+\Psi = \left( 1 + \frac{1}{2} \Omega_m a_t m + \frac{1}{2} \Omega_t a_t \gamma_4 \overrightarrow{D}_4 + \frac{1}{2} \Omega_s a_s \gamma_j \overrightarrow{D}_j \right) \psi  \notag \\
+\bar{\Psi} = \bar{\psi}\left( 1 + \frac{1}{2} \bar{\Omega}_m a_t m + \frac{1}{2} \bar{\Omega}_t a_t \gamma_4 \overleftarrow{D}_4 + \frac{1}{2} \bar{\Omega}_s a_s \gamma_j \overleftarrow{D}_j \right), 
+\end{align}
+where \cite{Chen:2000ej} describes a method for non-perturbative tuning of the improvement parameters, $\Omega_{m,t,s},\bar{\Omega}_{m,t,s}$. Here $a_{t,s}$ are the lattice spacings in the temporal and spatial directions which owing to our anisotropic formulation are not the same. One can show via integrating by parts, removing the surface terms, and making the choices $\bar{\Omega}_t = - \Omega_t$,   $\;\bar{\Omega}_s = - \Omega_s$,   $\;\bar{\Omega}_m + \Omega_m = 1$, that  the  action becomes 
+
+\begin{align*}
+&\left( 1 + \frac{1}{2}a_tm\right) \bar{\psi} \left[ m + \gamma_\mu \overrightarrow{D}_\mu \right] \psi + \bar{\psi}\left[ \Omega_t a_t \gamma_4 \overrightarrow{D}_4 m + \Omega_s a_s \gamma_i \overrightarrow{D}_i m \right] \psi \\
+& + \bar{\psi} \left[  \frac{1}{2} a_t \Omega_t \left( \gamma_\mu \gamma_4 \overrightarrow{D}_\mu \overrightarrow{D}_4 + \gamma_4 \gamma_\mu \overrightarrow{D}_4 \overrightarrow{D}_\mu \right) + \frac{1}{2}a_s \Omega_s \left( \gamma_\mu \gamma_i \overrightarrow{D}_\mu \overrightarrow{D}_i + \gamma_i \gamma_\mu \overrightarrow{D}_i \overrightarrow{D}_\mu \right) \right] \psi 
+\end{align*}
+
+
+We work in \emph{Euclidean} spacetime; the gamma matrices and Dirac matrices, $\sigma_{\mu\nu}$, are defined by 
+\begin{equation*}
+\{ \gamma_\mu , \gamma_\nu \} =2 \delta_{\mu\nu} \qquad \qquad \left[ \gamma_\mu , \gamma_\nu \right]  = -2i \sigma_{\mu\nu}. 
+\end{equation*}
+These relations can be used to re-express pairs of gamma matrices in terms of symmetric and antisymmetric tensors ( $\gamma_{\mu\nu} = \frac{1}{2}\left( \{\gamma_\mu , \gamma_\nu \}  + \left[ \gamma_\mu , \gamma_\nu \right]  \right) = \delta_{\mu\nu} - i \sigma_{\mu\nu}$). One can also reorganize the pairs of derivatives, we find the general relation\footnote{ It is conventional, in lattice gauge theory, to absorb the coupling, $g$, into the definition of the gauge field such that the covariant derivative takes the form $D_\mu = \partial_\mu -i A_\mu$. Using this convention the commutator of two gauge covariant derivatives is related to the field strength tensor by $ \left[  \overrightarrow{D}_\mu,\overrightarrow{D}_\nu \right] = -i  F_{\mu\nu}$ which differs, by a factor of $g^{-1}$, from that presented in \chapref{chap::intro}. }
+\begin{align*}
+\gamma_\mu \gamma_\nu \overrightarrow{D}_\mu\overrightarrow{D}_\nu + \gamma_\nu \gamma_\mu \overrightarrow{D}_\nu\overrightarrow{D}_\mu &= \delta_{\mu\nu} \{ \overrightarrow{D}_\mu,\overrightarrow{D}_\nu\} - i \sigma_{\mu\nu} \left[  \overrightarrow{D}_\mu,\overrightarrow{D}_\nu \right] \\
+&= \delta_{\mu\nu} \{ \overrightarrow{D}_\mu,\overrightarrow{D}_\nu\} +  \sigma_{\mu\nu} F_{\mu\nu}.
+\end{align*} 
+
+Using this relation one can show that the action becomes
+\begin{align*}
+\bar{\psi} \Bigg[ \;\;&\left( 1 + \frac{1}{2}a_t m \right) m  \\
+& + \left( 1 + \frac{1}{2} a_t m + m\Omega_t a_t\right) \gamma_4 \overrightarrow{D}_4  + \Omega_t a_t \overrightarrow{D}_4\overrightarrow{D}_4\\
+& + \left( 1 + \frac{1}{2} a_t m + m\Omega_s a_s\right) \gamma_i \overrightarrow{D}_i   + \Omega_s a_s \overrightarrow{D}_i\overrightarrow{D}_i\\
+& + \frac{1}{2}\left( \Omega_t a_t + \Omega_s a_s \right) \sigma_{4i} F_{4i} + \Omega_s a_s \sum_{i>j} \sigma_{ij} F_{ij} \;\;\Bigg] \psi. 
+\end{align*}
+
+Making the further choices $\Omega_s = -\frac{1}{2}\nu_s$, $\;\Omega_t = -\frac{1}{2}$, discretizing the derivatives, and including gauge field smearing in the link variables yields the action presented in \cite{Edwards:2008ja}, which we use in this calculation. 
+
+Improvement of the action also introduces extra terms into the definition of the vector current. Applying the transformation to the vector current, $j_\mu = \bar{\Psi}\gamma_\mu \Psi$ allows us to obtain the classically $\mathcal{O}(a)$ improved current. The transformation gives 
+\begin{align*}
+	j_\mu &= \big(1 + \tfrac{1}{2} a_t m \big)\, \bar{\psi} \gamma_\mu \psi    \\
+	&\quad- \tfrac{1}{4} a_t \big( \partial_4 (\bar{\psi} \sigma_{\mu 4} \psi)  - \delta_{\mu 4} \bar{\psi} ( \overleftarrow{D}_{\!4} - \overrightarrow{D}_{\!4})\psi \big) \\
+	&\quad- \tfrac{1}{4} \nu_s a_s \big( \partial_j (\bar{\psi} \sigma_{\mu j} \psi)  - \delta_{\mu j} \bar{\psi} ( \overleftarrow{D}_{\!j} - \overrightarrow{D}_{\!j})\psi \big),
+\end{align*} 
+and use of the classical equations of motion for the quark fields allows for the elimination of the gauge-covariant derivatives acting on quark fields to give
+\begin{align*}
+j_4 &= \big( 1 + \tfrac{1}{2}(m+m_0)a_t \big)\,  \bar{\psi}\gamma_4 \psi + \tfrac{1}{4} \tfrac{\nu_s}{\xi} ( 1- \xi) \, a_s \partial_j \big( \bar{\psi}\sigma_{4j} \psi\big)  \\
+j_k &= \big( 1 + \tfrac{1}{2}(m+m_0 \xi)a_t \big)\,  \bar{\psi}\gamma_k \psi + \tfrac{1}{4} ( 1 - \xi) \, a_t \partial_4 \big( \bar{\psi}\sigma_{4k} \psi\big),
+\end{align*}
+where $\xi = a_s/a_t$ is the anisotropy. In our formulation we choose to non-perturbatively determine the vector current renormalization and so we conventionally choose to absorb the mass dependent prefactor into the definition of the vector current renormalization. The improved current is then given by 
+\begin{align}
+j_4 &= Z_V^t \Big(   \bar{\psi}\gamma_4 \psi + \tfrac{1}{4} \tfrac{\nu_s}{\xi} ( 1- \xi) \, a_s \partial_j \big( \bar{\psi}\sigma_{4j} \psi\big)  \Big) \nonumber \\
+j_k &= Z_V^s \Big(   \bar{\psi}\gamma_k \psi + \tfrac{1}{4} ( 1 - \xi) \, a_t \partial_4 \big( \bar{\psi}\sigma_{4k} \psi\big) \Big).
+\end{align}
+As expected we observe that the improvement terms vanish at classical level in the case of an isotropic action, $\xi = 1$.
+
+In this manuscript we concern ourselves only with the unimproved current, finding in explicit calculation that improvement alters the results at approximately the $5\%$ level \cite{Shultz:2015pfa}. 
+
+
+

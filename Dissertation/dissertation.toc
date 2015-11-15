@@ -1,0 +1,77 @@
+\hfill Page\par 
+\contentsline {chapter}{\uppercase {List of Tables}}{viii}
+\contentsline {chapter}{\uppercase {List of Figures}}{ix}
+\vspace *{12pt}
+\noindent Chapter
+
+\contentsline {chapter}{\numberline {1.}\uppercase {Introduction}}{1}
+\contentsline {chapter}{\numberline {2.}\uppercase {A Quark Picture of Hadrons}}{8}
+\contentsline {section}{\numberline {2.1}\uppercase {Quarkonia Multiplets}}{9}
+\contentsline {subsection}{\numberline {2.1.1}\uppercase {Construction of Meson Wavefunctions}}{9}
+\contentsline {subsection}{\numberline {2.1.2}\uppercase {Allowed and Exotic Quantum Numbers}}{12}
+\contentsline {section}{\numberline {2.2}\uppercase {The lightest hybrid supermultiplet?}}{13}
+\contentsline {chapter}{\numberline {3.}\uppercase {Radiative Transitions}}{17}
+\contentsline {section}{\numberline {3.1}\uppercase {Heavy Quarks and the Vector Current}}{17}
+\contentsline {subsection}{\numberline {3.1.1}\uppercase {The Vector Current}}{17}
+\contentsline {subsection}{\numberline {3.1.2}\uppercase {Multipole Expansion}}{20}
+\contentsline {chapter}{\numberline {4.}\uppercase {Lattice Gauge Theory}}{25}
+\contentsline {section}{\numberline {4.1}\uppercase {The Path Integral }}{25}
+\contentsline {section}{\numberline {4.2}\uppercase {Fermions in the Path Integral}}{28}
+\contentsline {subsection}{\numberline {4.2.1}\uppercase {Correlation Functions}}{30}
+\contentsline {subsection}{\numberline {4.2.2}\uppercase {Symmetries and Intuition}}{31}
+\contentsline {chapter}{\numberline {5.}\uppercase {Spectroscopy on the lattice}}{34}
+\contentsline {section}{\numberline {5.1}\uppercase {Correlation Functions}}{34}
+\contentsline {section}{\numberline {5.2}\uppercase {Operator Construction}}{36}
+\contentsline {subsection}{\numberline {5.2.1}\uppercase {Distillation Smearing}}{37}
+\contentsline {subsection}{\numberline {5.2.2}\uppercase {Meson Interpolators}}{40}
+\contentsline {subsubsection}{\numberline {5.2.2.1}\uppercase {Quantum Numbers of Dirac Bilinears}}{40}
+\contentsline {subsubsection}{\numberline {5.2.2.2}\uppercase {Derivative Based Meson Operators}}{42}
+\contentsline {subsubsection}{\numberline {5.2.2.3}\uppercase {Subduction into lattice irreps}}{44}
+\contentsline {subsubsection}{\numberline {5.2.2.4}\uppercase {Cubic Symmetry}}{46}
+\contentsline {section}{\numberline {5.3}\uppercase {Correlator Construction and Analysis}}{48}
+\contentsline {subsection}{\numberline {5.3.1}\uppercase {Principal Correlators}}{50}
+\contentsline {subsection}{\numberline {5.3.2}\uppercase {Continuum Symmetries}}{51}
+\contentsline {subsection}{\numberline {5.3.3}\uppercase {State Identification}}{51}
+\contentsline {section}{\numberline {5.4}\uppercase {$SU(3)_F$ Spectrum}}{59}
+\contentsline {chapter}{\numberline {6.}\uppercase {Radiative Transitions on the lattice}}{66}
+\contentsline {section}{\numberline {6.1}\uppercase {Form-factors and Transitions }}{66}
+\contentsline {subsection}{\numberline {6.1.1}\uppercase {Vector current matrix elements}}{67}
+\contentsline {subsection}{\numberline {6.1.2}\uppercase {Kinematic Decompositions}}{70}
+\contentsline {section}{\numberline {6.2}\uppercase {Three Point Functions}}{72}
+\contentsline {subsection}{\numberline {6.2.1}\uppercase {Optimized Operators}}{73}
+\contentsline {subsection}{\numberline {6.2.2}\uppercase {Three-Point Functions Using Optimized Operators}}{74}
+\contentsline {subsection}{\numberline {6.2.3}\uppercase {Extracting Form Factors}}{81}
+\contentsline {subsection}{\numberline {6.2.4}\uppercase {Cubic Symmetry}}{82}
+\contentsline {subsection}{\numberline {6.2.5}\uppercase {Renormalization}}{85}
+\contentsline {chapter}{\numberline {7.}\uppercase {Results}}{88}
+\contentsline {section}{\numberline {7.1}\uppercase {calculation details}}{88}
+\contentsline {section}{\numberline {7.2}\uppercase {Extracted form-factors \& transitions}}{88}
+\contentsline {subsection}{\numberline {7.2.1}\uppercase {Form-factors}}{89}
+\contentsline {subsubsection}{\numberline {7.2.1.1}\uppercase {$\pi $ form-factor}}{89}
+\contentsline {subsubsection}{\numberline {7.2.1.2}\uppercase {$\rho $ form-factors}}{92}
+\contentsline {subsubsection}{\numberline {7.2.1.3}\uppercase {$\pi '$ form-factor}}{94}
+\contentsline {subsection}{\numberline {7.2.2}\uppercase {Radiative Transitions}}{97}
+\contentsline {subsubsection}{\numberline {7.2.2.1}\uppercase {$\pi ' \rightarrow \pi \gamma $ transition}}{97}
+\contentsline {subsubsection}{\numberline {7.2.2.2}\uppercase {$\rho \rightarrow \pi \gamma $ transition}}{97}
+\contentsline {subsubsection}{\numberline {7.2.2.3}\uppercase {$\rho '\rightarrow \pi \gamma $ transition}}{99}
+\contentsline {subsubsection}{\numberline {7.2.2.4}\uppercase {$\rho ''\rightarrow \pi \gamma $ transition}}{101}
+\contentsline {subsubsection}{\numberline {7.2.2.5}\uppercase {$\pi ' \rightarrow \rho \gamma $ transition}}{101}
+\contentsline {subsubsection}{\numberline {7.2.2.6}\uppercase {$\rho ' \rightarrow \pi ' \gamma $ transition}}{104}
+\contentsline {chapter}{\numberline {8.}\uppercase {Concluding Remarks}}{107}
+\vspace *{12pt}
+\contentsline {chapter}{BIBLIOGRAPHY}{109}
+\vspace *{12pt}
+\noindent APPENDICES
+
+\contentsline {chapter}{\numberline {A.}\uppercase {Methods}}{115}
+\contentsline {section}{\numberline {A.1}\uppercase {Grassman Numbers}}{115}
+\contentsline {section}{\numberline {A.2}\uppercase {Single Elimination Jackknife Statistics }}{116}
+\contentsline {chapter}{\numberline {B.}\uppercase {Spectroscopy}}{118}
+\contentsline {section}{\numberline {B.1}\uppercase {Generalized Eigenvalue Problem}}{118}
+\contentsline {subsection}{\numberline {B.1.1}\uppercase {Derivation}}{118}
+\contentsline {subsection}{\numberline {B.1.2}\uppercase {Implementation}}{120}
+\contentsline {section}{\numberline {B.2}\uppercase {Momentum conservation in a finite-volume}}{121}
+\contentsline {section}{\numberline {B.3}\uppercase {Subduction Coefficients for Mesons in Flight }}{123}
+\contentsline {section}{\numberline {B.4}\uppercase {Clover Action}}{126}
+\vspace *{12pt}
+\contentsline {chapter}{VITA}{129}

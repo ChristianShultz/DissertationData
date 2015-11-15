@@ -1,0 +1,180 @@
+\chapter{Radiative Transitions} \label{chap::radTranQM}
+
+In the previous chapter we reviewed the constituent quark model and constructed the angular momentum wave functions for simple $q\bar{q}$ constructions. We found an allowed spectrum of states which could be labeled by their spin, parity, and charge conjugation quantum numbers, $J^{PC}$. We then proceeded to briefly examine a lattice spectrum and found that we could tentatively identify the spectrum as a conventional set of $q\bar{q}$ eigenstates supplemented by a spectrum of hybrid and exotic states. 
+
+These hybrid states offer an intriguing opportunity to investigate some of the non-perturbative dynamics giving rise to the spectrum of QCD. Specifically we will concern ourselves with the calculation of vector current matrix elements which potentially allow us to probe the underlying quark current and charge distributions within hadrons. 
+
+Here we present a non-relativistic expansion of the vector current and identify the origin of heavy quark spin flip suppression. We then proceed to introduce the multipole expansion of vector current matrix elements which effectively organizes the vector current into reduced matrix elements of irreducible spherical tensors which encode the dynamics of hadron-hadron matrix elements. The chapter concludes with an overview of some of the phenomenology associated with radiative decays. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Heavy Quarks and the Vector Current} \label {QM::HQ}
+\subsection{The Vector Current}
+In this section we expand the vector current, $\bar{\psi}\gamma^k\psi$, in the heavy quark limit. Since we will be performing a non-relativistic reduction we use the Dirac gamma matrix convention,
+
+\begin{equation*}
+\gamma^0 = \begin{pmatrix}
+1 & 0 \\
+0 & -1 
+\end{pmatrix}
+\qquad \qquad
+\gamma^k = \begin{pmatrix}
+0 & \sigma_k \\
+-\sigma_k & 0
+\end{pmatrix}.
+\end{equation*}
+The $\sigma_k$ are the Pauli Matrices,  
+\begin{equation*}
+\sigma_1 = \begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix} \qquad \quad
+\sigma_2 = \begin{pmatrix}0 & -i \\ i & 0\end{pmatrix} \qquad \quad
+\sigma_3 = \begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}.
+\end{equation*}
+In this normalization the matrices satisfy the commutation relation $\left[ \sigma_i , \sigma_j \right] = 2i \epsilon_{ijk} \sigma_k $ as well as the anti-commutation relation $\{ \sigma_i , \sigma_j \} =  2\delta_{ij}$.
+
+The quark fields, $\psi$, are represented by vectors in Dirac space which are solutions to the free Dirac equation. 
+\begin{equation*}
+\big[ i \gamma^\mu \partial_\mu - m_q \big] \psi= 0 
+\end{equation*}
+The quark field, $\psi$, can be represented in terms of ladder operators: 
+\begin{equation*}
+\psi(\vec{x}) = \int \frac{d^3p}{(2\pi)^3} \frac{1}{\sqrt{2E_{\vec{p}}}}\sum_{s=\pm}\left[ a^s_{\vec{p}} u^s(\vec{p}) e^{-i\vec{p}\cdot \vec{x}} + b^{s\dagger}_{\vec{p}} v^s(\vec{p}) e^{i\vec{p}\cdot \vec{x}}\right],
+\end{equation*}
+and the creation and annihilation operators for quarks and antiquarks obey the anti commutation rules, 
+\begin{equation*}
+\{a_{\vec{p}}^r , a_{\vec{q}}^{s\dagger}\} = \{b_{\vec{p}}^r , b_{\vec{q}}^{s\dagger}\} = (2\pi)^3 \delta^3(\vec{p}-\vec{q})\delta_{r,s}, 
+\end{equation*}
+with all other anticommutators equal to zero. 
+
+For our purposes it will be sufficient to consider only the positive frequency solutions to the Dirac equation\footnote{We seek a non-relativistic reduction of the current operator $\bar{\psi}\gamma^k\psi$. Writing out the current we find four terms ($a^\dagger a, a^\dagger b , b^\dagger a, b^\dagger b$). Under normal ordering terms proportional to $a^\dagger b $  and $b^\dagger a$ will not contribute. The negative frequency solution ($b^\dagger b$) simply provides a copy of the positive frequency result with quarks exchanged for anti-quarks.}, they are given by\footnote{$\psi^{+}(\vec{x}) = \sum_{s=\pm}\int \frac{d^3p}{(2\pi)^3} \ \psi^{(+)}_{ \vec{p} ,s}(\vec{x})a^s_{\vec{p}}e^{-i\vec{p}\cdot\vec{x}}$ -- we are concerned with the general form of the vector current and it is sufficient to consider only a single momentum.}
+\begin{equation*}
+\psi^{(+)}_{ \vec{p} ,s}(\vec{x}) = \frac{1}{\sqrt{2E_{\vec{p}}}} u^s(\vec{p}) e^{-i\vec{p}\cdot\vec{x}} \qquad \qquad u^s(\vec{p}) = \sqrt{E_{\vec{p}} + m_q} \begin{bmatrix}1\\ \frac{\vec{\sigma}\cdot \vec{p}}{E_{\vec{p}} + m_q}\end{bmatrix}\chi^{(s)}.
+\end{equation*}
+$\chi^{(s)}$ is a two-spinor representing a spin 1/2 particle and satisfying $\chi^{(s')\dagger}\chi^{(s)} = \delta_{s's}$. Choosing to quantize along the z-axis yields
+\begin{equation*}
+\chi^{(\frac{1}{2})} = \begin{bmatrix}1 \\ 0 \end{bmatrix} \qquad \qquad 
+\chi^{(-\frac{1}{2})} = \begin{bmatrix}0 \\ 1 \end{bmatrix}.
+\end{equation*}
+
+In quantum field theory the dual form of a quark field is given by $\bar{\psi} \equiv \psi^\dagger \gamma^0$. The extra factor of $\gamma^0$ relative to the hermitian adjoint is introduced in order to make bilinear forms well behaved under Lorentz transformations (e.g. $\bar{\psi}\psi$ is a Lorentz scalar while $\psi^\dagger \psi$ is not). Some details of the transformations of Dirac bilinears under Lorentz transformations can be found in \secref{sec::bilinearTransformations}.
+
+Having introduced the machinery and notation we now turn to the problem at hand, namely extracting the heavy quark limit of the bilinear $\bar{\psi} \gamma^k \psi $ which, when contracted with a photon field, provides the interaction between photons and quarks in QED. Explicitly writing the structure of the current we see 
+\begin{align*}
+&\bar{\psi }_{ \vec{p}\,' ,s'}(\vec{x})  \gamma^k \psi_{\vec{p}, s}(\vec{x}) \\
+&\quad= \frac{e^{i\vec{p}\,' \cdot \vec{x}}}{\sqrt{2E_{\vec{p}\,'}}}u(\vec{p}\,',s')^\dagger \gamma^0\gamma^k u(\vec{p},s) \frac{e^{-i\vec{p} \cdot \vec{x}}}{\sqrt{2E_{\vec{p}}}} \\
+&\quad= \frac{e^{i (\vec{p}\,'-\vec{p})\cdot \vec{x}} \sqrt{E_{\vec{p}\,'} + m_q}\sqrt{E_{\vec{p}} + m_q}}{\sqrt{2E_{\vec{p}\,'}}\sqrt{2E_{\vec{p}}}}  \;\chi^{(s')\dagger} \left( \frac{\vec{\sigma}\cdot \vec{p}\,'}{E_{\vec{p}\,'} + m_q} \sigma_k +  \sigma_k\frac{\vec{\sigma}\cdot \vec{p}}{E_{\vec{p}} + m_q} \right) \chi^{(s)}.
+\end{align*} 
+
+The r.h.s. of the above equation can be further manipulated using the identity $ \left( \vec{\sigma} \cdot \vec{a} \right) \sigma_k = a_k - i \left[ \vec{a} \times \vec{\sigma} \right]_k $, one finds:
+\begin{align*}
+&\psibar_{\vec{p}\,' ,s'}(\vec{x})   \gamma^k \psi_{\vec{p}, s}(\vec{x}) = \\
+&\quad \frac{e^{i (\vec{p}\,'-\vec{p})\cdot \vec{x}}  \sqrt{E_{\vec{p}\,'} + m_q}\sqrt{E_{\vec{p}} + m_q}}{\sqrt{2E_{\vec{p}\,'}}\sqrt{2E_{\vec{p}}}} \;\chi^{(s')\dagger} \left( \frac{ p'_k - i\left[ \vec{p}\,' \times \vec{\sigma} \right]_k}{E_{\vec{p}\,'} + m_q} +  \frac{ p_k + i\left[\vec{p} \times \vec{\sigma} \right]_k}{E_{\vec{p}} + m_q} \right) \chi^{(s)}. 
+\end{align*} 
+Choosing to work in the frame $|\vec{p}| = |\vec{p}\,'|$ simplifies the result considerably. We find 
+\begin{equation*}
+\psibar_{\vec{p}\,' ,s'}(\vec{x})  \gamma^k \psi_{\vec{p}, s}(\vec{x}) = \frac{e^{i \vec{q}\cdot\vec{x}} }{2E_{\vec{p}}} \;\chi^{(s')\dagger} \Big(  \left[ p' + p\right]_k  -i\left[\vec{q} \times \vec{\sigma} \right]_k \Big) \chi^{(s)}. 
+\end{equation*} 
+where $\vec{q} = \vec{p}\,' - \vec{p}$. Recalling that we are working in the limit of large quark mass we remind the reader that in this limit the momentum transfer, $\vec{q}$ is also much smaller than the momentum of the struck quark $\vec{p}$. This is akin to trying to deflect a bowling ball with a ping-pong ball. The relative difference in inertial masses mean that the impulse delivered to the bowling ball is very small relative to the momentum of the bowling ball.  
+
+Expanding the energy for momenta small relative to the quark mass we arrive at\footnote{Working only to order $m^{-1}$ negates the need for making the simplification $|\vec{p}| = |\vec{p}\,'|$.} 
+\begin{align*}
+&\psibar_{\vec{p}\,' ,s'}(\vec{x})  \gamma^k \psi_{\vec{p}, s}(\vec{x}) \\
+&\quad= e^{i \vec{q}\cdot \vec{x}}  \;\chi^{(s')\dagger}\left(  \frac{\left[ p' + p\right]_k}{2m_q}  -i \frac{\left[\vec{q} \times \vec{\sigma} \right]_k}{2m_q} \right) \chi^{(s)} \left( 1 - \frac{1}{2} \frac{p^2}{m_q^2} + \frac{3}{8}\frac{p^4}{m_q^4}   \right) +  \mathcal{O}(\frac{p^6}{m_q^6}). 
+\end{align*}
+It is sufficient for our purposes to work only to order $m^{-1}$. Exchanging the momenta for a velocity-like term ($\vec{v} = \frac{ \vec{p}\,' + \vec{p}}{2m_q}$), which has a good limit as the quark mass becomes arbitrarily large, the non-relativistic vector current is 
+\begin{equation}
+\mathcal{J}^k_{\mathrm{NR}}(\vec{p}\,'s',\vec{p}\,s;\vec{x})= e^{i \vec{q} \cdot \vec{x}}  \;\chi^{(s')\dagger} \left(   \vec{v}_k -i \frac{\left[\vec{q} \times \vec{\sigma} \right]_k}{2m_q} \right) \chi^{(s)}. \label{eqn::hq_vector_current_expansion}
+\end{equation} 
+
+The second term appearing between the spinors flips the spin of the quark and is the origin of \emph{heavy quark spin-flip suppression} which is the notion that matrix elements of the vector current involving quark spin flips are depleted relative to those which leave the spin wave-function untouched. For example  a $^{2S+1}L_J$ = $^3S_1$ state decaying to  $^1S_0$ should, from the viewpoint of a quark model, be suppressed by a power of the quark mass since the structure of the spin wave-function changes from triplet to singlet. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Multipole Expansion}
+Having demonstrated the expansion of the vector current in the case of heavy quarks we now turn to the expansion of the result in terms of multipoles. This procedure eventually reduces to organizing the vector current into a sum over irreducible spherical tensors. The multipole elements then correspond to the reduced matrix elements of these irreducible tensors. 
+
+As usual when considering angular momenta it is most convenient to work in a spherical basis. We choose to quantize along the z-axis. The vector current can be rewritten in terms of its angular momentum components which we label by $m$. The components are defined by
+
+\begin{equation} 
+\mathcal{J}^m_{NR}(\vec{p}\,'s',\vec{p}\,s;r)  \equiv \vec{\varepsilon}\,(\vec{q},m) \cdot \vec{\mathcal{J}}_{\mathrm{NR}}(\vec{p}\,'s',ps;r)\label{eqn::hq_vector_current_expansion_ang}
+\end{equation}
+where $\vec{\varepsilon}\,(\vec{q},m) $ represents a polarization vector for a spin-1 particle quantized about the z-axis. We use the basis 
+\begin{gather*}
+\vec{\varepsilon}\,(\vec{q} = |q| \hat{z},m=0) = \left[ 0, 0, E/m \right] \\
+\vec{\varepsilon}\,(\vec{q}= |q| \hat{z},m=\pm) = \mp \frac{1}{\sqrt{2}}\left[ 1, \pm i , 0 \right].
+\end{gather*}
+
+ The plane wave appearing in the vector current (\eqnref{eqn::hq_vector_current_expansion}) can be expanded into products of Bessel functions and Legendre polynomials (Wigner D-matrices) using    
+ \begin{equation*}
+e^{i\vec{k}\cdot\vec{x}} = \sum_{l=0}^{l = \infty} i^l (2l+1) j_l(kx) P_l(\cos \theta) =  \sum_{l=0}^{l = \infty} i^l (2l+1) j_l(kx) D^{(l)}_{0,0}(0,\theta,0)
+\end{equation*}
+where we have used the fact that $P_l(\cos\beta) = D^{(l)}_{0,0}(\alpha=0,\beta,\gamma=0)$.
+
+
+Rewriting \eqnref{eqn::hq_vector_current_expansion} in terms of its angular decomposition yields 
+\begin{align*}
+\mathcal{J}^m_{NR}(\vec{p}\,'s',\vec{p}\,s;r) &= \sum_{l=0}^{l = \infty} i^l (2l+1) j_l(qr) D^{(l)}_{0,0}(\theta) \\ 
+& \qquad \quad \times \left[ \sum_k \varepsilon_k(\vec{q},m)\chi^{(s')\dagger} \left(   \vec{v}_k+ -i \frac{\left[\vec{q} \times \vec{\sigma} \right]_k}{2m_q} \right) \chi^{(s)} \right]. 
+\end{align*}
+In order to elucidate the transformation properties of the current it is useful to decompose the term in brackets into spherical tensors. 
+
+Specializing our discussion to \emph{real} photons ($m =\pm$) and recalling that for a real photon the polarization is orthogonal to the momentum we can use the scalar triple product identity to rewrite the term featuring a cross-product as 
+\begin{align*}
+\vec{\varepsilon}(\vec{q},m) \cdot \left[ \vec{q} \times \vec{\sigma} \right] &= \vec{\sigma} \,\cdot \left[ \vec{\varepsilon}\,(\vec{q},m) \times \vec{q} \,\right]  \\
+&=  is_m \vec{\sigma} \,\cdot  \vec{\varepsilon}\,(\vec{q},m) |\vec{q}\,| 
+\end{align*}
+where the variable $s_m$ takes the sign of the spin projection,  $s_+ = 1$ and $s_- = -1$.  So it follows that the combination $\vec{\varepsilon}(\vec{q},m) \cdot \left[ \vec{q} \times \vec{\sigma} \right] $ is nothing more than a raising or lowering operator acting in spinor-space. The vector current becomes 
+\begin{equation}
+\mathcal{J}^m_{NR}(\vec{p}\,'s',\vec{p}\,s;r) = \sum_{l=0}^{l = \infty} i^l (2l+1) j_l(qr) D^{(l)}_{0,0}(\theta) \left[  \vec{v}_m \delta_{s's}+ s_m\frac{|\vec{q}\,|}{2m} \chi^{(s')\dagger} \vec{\sigma}_{m}  \chi^{(s)} \right]. \label{QM::vec_curren_partial_decomp}
+\end{equation}
+Both terms transform like spin-1 under rotations. Upon inspection one sees that the velocity term transforms like a vector, it is negative under parity.  The magnetic dipole term, $\chi^{(s')\dagger} \vec{\sigma}_r  \chi^{(s)}$, originates from an axial vector appearing in a cross product with an ordinary vector, it too is negative under parity. 
+
+The problem now reduces to reorganizing the current into a sum over irreducible spherical tensors. Such a tensor is defined by its transformation properties under rotations, namely a rank-$k$ spherical tensor transforms as 
+\begin{equation*}
+U(R)\mathcal{T}^{(k)}_m U(R)^\dagger = \sum_{m'} \mathcal{T}^{(k)}_{m'}D^{(k)}_{m'm}(R).
+\end{equation*}
+Where $U(R)$ is a unitary representation of the rotation, $R$, and $D^{(k)}_{m'm}(R)$ is a Wigner D-matrix. 
+
+The angular structure of the current can then be exposed via the group theoretic projection formula (orthogonality relation)
+\begin{equation*}
+\int dR \; D^{(J')}_{m_1' ,m_2'}(R) D^{(J)}_{m_1 ,m_2}(R) = \frac{8\pi^2}{2J+1} \delta_{JJ'}\delta_{m_1' m_1} \delta_{m_2' m_2}
+\end{equation*}
+which allows us to pick out various components of arbitrary rank tensors. The integral, $\int dR$, is an integral over the group space, for example the three Euler angles. Projecting out the various irreducible spherical tensors we find the generic formula
+\begin{align*}
+\mathcal{T}^{(k)}_m = \frac{2J+1}{8\pi^2} \int dR \; U(R) \mathcal{J}^{m'}_{NR}(\vec{p}\,'s',\vec{p}\,s;r) U(R)^\dagger \; D^{(k)}_{m0}(R)
+\end{align*}
+which tells us how to access any given term in the expansion. 
+
+Generically these current operators will appear sandwiched between states of definite angular momentum which taken with the symmetries of the current restrict the various values of $k$ that may appear. The multipole moments are then identified with the reduced matrix elements in the standard way, denoting the spin, parity, and spin projection eigenstate using $|J^{P}m\rangle$, the reduced matrix elements are given by 
+\begin{equation}
+\langle J'^{P'} m'  | \mathcal{T}^{(k)}_{\bar{m}} | J^P m \rangle 
+= (-1)^{m+J'-k}\begin{pmatrix}J' & k & J \\ m' & \bar{m} & -m\end{pmatrix} \langle J'^{P'} || T^{(k)} || J^P\rangle  \label{QM::3J_decomp}.
+\end{equation}
+One conventional labeling of the reduced matrix elements is 
+\begin{equation*}
+\langle J'^{P'} || T^{(k)} || J^{P} \rangle = \frac{1}{2} \Big[ \left( 1 + (-1)^k\delta P \right) E_k + \left( 1 - (-1)^k\delta P \right) M_k\Big] \label{QM::multipole_convention}
+\end{equation*}
+where $E_k$ and $M_k$ are the electric and magnetic multipole moments and $\delta P$ is the product of the initial and final state parities. This redefinition separates electric from magnetic transitions based on the relative parity of the initial and final state -- for a given $k$ the transition is either of magnetic or electric type. 
+
+There is in fact a phenomenological hierarchy of multipole amplitudes associated with this decomposition. Returning, for a moment, to $q\bar{q}$ angular momentum wave functions within the quark model, we recall that the allowed $J^{PC}$ quantum numbers followed from the symmetries of the $q\bar{q}$ angular momentum constructions. We first coupled the spins of the two fermions into $S=0,1$ and then added in relative orbital angular momentum to form $|L -S| \leq J \leq L+S$. Within our non-relativistic expansion of the vector current the current can either leave the spin wave function invariant or flip the spin of one of the quarks moving from $S=0$ to $S=1$ or vice versa. This may be seen by considering  \eqnref{QM::vec_curren_partial_decomp}. The term in brackets may be rewritten as 
+\begin{equation}
+\vec{v}_m \delta_{s's}+ s_m\frac{|\vec{q}\,|}{2m} \chi^{(s')\dagger} \vec{\sigma}_{m}  \chi^{(s)} = \vec{v}_m \delta_{s's}  -\frac{|\vec{q}|}{\sqrt{2}m}\delta_{s',s+m}.
+\end{equation}
+Here we explicitly see that transitions involving quark spin flips get suppressed by a power of the quark mass. Using this decomposition in conjunction with our definition of the multipole matrix elements one can show that the two terms occurring above can be identified as the origins of electric and magnetic multipole transitions respectively. 
+
+As a simple example we can consider a vector ($^3S_1$) state radiatively decaying to a pseudoscalar ($^1S_0$). Using \eqnref{QM::3J_decomp} we see that in order for the 3-$J$ symbol to be non-zero we must have $k=1$. Since the initial and final states are both $S$-wave we see that the product of the initial and final parities is positive an by inspection of \eqnref{QM::multipole_convention} we can identify the transition to be of magnetic dipole type ($M_1$). Now inspecting the relative spin wave functions we also notice that we move from triplet to singlet, a spin flip has occurred. Thus on the basis of our non-relativistic model we expect this transition to be suppressed by the quark mass. 
+
+The current can potentially also connect states of the same spin but different spin projections, for example consider a vector meson interacting with an external photon field via the absorption of a photon which changes the spin wave function from positive to zero spin projection ( $|\!\!\uparrow \uparrow \rangle \rightarrow |\!\!\uparrow \downarrow \rangle +  |\!\!\downarrow \uparrow \rangle$ ) -- this too should be suppressed. 
+
+Transitions in this vein have in fact already been calculated non-perturbatively on the lattice in the charmonium sector where the quark model is expected to be rather successful owing to the heavy nature of the charm quark.  $\chi_{c_1}\rightarrow \gamma J/\psi$ and $\chi_{c_2} \rightarrow \gamma J/\psi$ were calculated using lattice QCD in \cite{Dudek:2009kk,Dudek:2006ej}. For the $\chi_c$ transitions\footnote{$\chi_{c_J} \sim \;^3P_J$} the expected hierarchy of multipoles was observed. In particular for $\chi_{c_1}\rightarrow \gamma J/\psi$ there are three transition amplitudes, one longitudinal\footnote{When considering off shell photons there is a third polarization state, the longitudinal state, corresponding to helicity zero.}, and two transverse ($E_1, M_2$); the authors found that $|\frac{M_2}{E_1}| \sim 0.1$. A similar relative scaling was found in $\chi_{c_2} \rightarrow \gamma J/\psi$, here there are five multipoles, three transverse and two longitudinal. The authors extracted $\frac{M_2}{\sqrt{E_1^2 + M_2^2 + E_3^2}} \sim 0.4$ and $\frac{E_3}{\sqrt{E_1^2 + M_2^2 + E_3^2}} \sim 0.01$.
+
+The gradation of sizes of multipole amplitudes will be of particular interest in our analysis. We expect, on the basis of this non-relativistic expansion for heavy quarks, that all magnetic transitions for conventional $q\bar{q}$ mesons are suppressed.  One possible signal of observation of a non-conventional meson is then a large magnetic transition amplitude where the photon provides the angular momentum for an excitation of gluonic origin. In some sense we will be looking for transitions that do not fit within the expected pattern in the hopes that they may provide some insight into the gauge degrees of freedom of QCD. 
+
+%\footnote{The term quenched refers to an approximation used in earlier calculations where the fermion determinant occurring in the probability density along which we draw configurations is set to 1 in order to reduce the computational complexity of the calculation. Such an approximation effectively removes quark loops from the calculation an may be well motivated at high quark mass where we expect the loops to scale like $m^{-1}$.} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

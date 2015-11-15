@@ -1,0 +1,81 @@
+
+\subsection{Implementation}
+
+Considering only the saturation of the Correlation Matrix by the lightest $\mathrm{dim}(C)$ states suggests that we could continue to push the value of $t_0$ further out and at each successive value obtain a better solution to the spectrum as the contribution of higher excited states will be exponentially suppressed. While this naively seems to be an effective prescription we find in practice that the correlator data become increasingly noisy at high values of $t_0$ which effectively washes out the exponentially suppressed signal.  What is left amounts to a bancing act of trying to push $t_0$ out as far as possible until the point that the correlation functions become too noisy to extract a solution. 
+\par
+Noting the Correlation Matrix, $C(t)$, is Hermitian, we may perform a Cholesky decomposition, $C(t) = L(t)L^{\dagger}(t)$ where $L$ is a lower triangular matrix. We can then rewrite Equation \ref{eqn:gen_eig} as
+\begin{equation*}
+C(t)V(t) = L(t_0)L^{\dagger}(t_0)V(t)\Lambda(t)
+\end{equation*}
+Assuming the matrix $L$ is non singular we can multiply the above equation from the left by $L^{-1}$, insert $\mathbb{1} = (L^{\dagger})^{-1}L^{\dagger}$, and define a new set of eigenvectors $W(t_0,t) = L^{\dagger}(t_0)V(t)$ to recover a standard eigenvalue problem.
+\begin{equation*}
+\left[L^{-1}(t_0)C(t)L^{\dagger-1}(t_0)\right]W(t_0,t) = W(t_0,t)\Lambda(t)
+\end{equation*}
+Solving the standard eigenvalue problem is straightforward and the generalized eigenvectors can be recovered by $V(t) = L^{\dagger-1}(t_0)W(t_0,t)$.
+\par
+Provided $C(t)$ is positive definite there exists a Cholesky factorization.  However, due to the increasing noise as we move to larger values of $t_0$ it is possible for the noise in the matrix elements to combine in such a way that decomposition become impossible.  A further concern is the fact that the decomposition becomes unstable for ill-conditioned matrices (matrices in which the ratio of the largest singular value to the smallest is greater than some threshold value, generally the inverse of floating point precision $\mathcal{O}(10^6)$ for single precision lattice data).  If we examine the form of Equation \ref{eqn:C_ij} we see that for large values of $t_0$ we can neglect the contribution of higher mass states and the condition number will be $\mathcal{O}(e^{(m_{\mathrm{dim}(C)} - m_{ground})t_0})$ which clearly grows out of control for large values of $t_0$.
+\par 
+In order to combat statistical noise and in the hope of extending $t_0$ to larger values we investigated another solution to Equation \ref{eqn:gen_eig} using Singular Value Decomposition.  It is well known that any matrix $M$, real or complex, may be factorized to the form $M = U\Sigma V^{\dagger}$\cite{numRecp}, where $U$ and $V$ are unitary matrices and $\Sigma$ is a diagonal matrix whose entries are the ``singular values'' of $M$. In the case of symmetric or Hermitian matrices it is evident that $M = U\Sigma U^{\dagger}$ and we see SVD reduces to eigen decomposition. It then follows that algebraically $M^{-1} = V\cdot [diag(1/\sigma_j)]\cdot U^{\dagger}$, for $\sigma_j$ the j$^{\text{th}}$ singular value of $\Sigma$.  Further in the event that one of the $\sigma_j$'s is singular or near singular, it can be shown that the best approximation to the inverse, the pseudoinverse (Moore-Penrose Inverse), is obtained by setting $\frac{1}{\sigma_j} \rightarrow 0$ \cite{numRecp}. This machinery will be useful in constructing a solution involving SVD below.
+\par
+Noting Equation \ref{eqn:gen_eig} again,
+\begin{equation*}
+C(t)V(t) = C(t_0)V(t)\Lambda(t).
+\end{equation*}
+We see we can decompose $C(t_0) = U(t_0)\Sigma(t_0)U^{\dagger}(t_0)$ and the above becomes
+\begin{equation*}
+C(t)V(t) = U(t_0)\Sigma(t_0)U^{\dagger}(t_0)V(t)\Lambda(t).
+\end{equation*}
+Multiplying from the left by $\frac{1}{\sqrt{\Sigma^{+}}}U^{\dagger}$, where $\frac{1}{\sqrt{\Sigma^{+}}}$ is the square root of the pseudoinverse ($\Sigma$ is diagonal so the inverse square root is trivial) of the singular value matrix with singular values reset to 0, we see the above becomes
+\begin{equation*}
+\frac{1}{\sqrt{\Sigma^{+}}}U^{\dagger}C(t)V(t) = \sqrt{\Sigma^{+}}U^{\dagger}V(t)\Lambda(t)
+\end{equation*}
+Where we have used the property $U^{\dagger}U = \mathbb{1}$.  Now inserting $\mathbb{1} = U\sqrt{\frac{\Sigma^{+}}{\Sigma^{+}}}U^{\dagger}$ and defining $W(t) \equiv \sqrt{\Sigma^{+}}U^{\dagger}V(t)$ we see we can recover a standard eigenvalue problem
+\begin{equation}
+\label{eqn:svd_gen_eig}
+\left(\frac{1}{\sqrt{\Sigma^{+}}}U^{\dagger}C(t)U\frac{1}{\sqrt{\Sigma^{+}}}\right)W(t) =  W(t)\Lambda(t) 
+\end{equation}
+Again the generalized eigenvectors are recoverable from the standard eigenvectors by simple matrix algebra, $V(t) = U\frac{1}{\sqrt{\Sigma^{+}}}W(t)$.
+\par
+Upon closer examination of Equation \ref{eqn:svd_gen_eig} we see that by resetting the singular values we are effectively doing two things.  The first is removing the null space from the linear system that results from statistical noise.  The second is removing states that are not well described by any linear combination of operators.  If we consider a diagonal Correlation Matrix $C_{ij} \propto Z_i^2e^{-m_it}\delta_{ij}$ we could have states that have weak or suppressed fundamental overlap ($Z_i$) for some reason (perhaps we didn't include operators that ``look'' like that state).  To the computer this looks the same as a null-space and thus it too is removed.  We then solve in a further reduced sub space. The reduced space solution can then be ``unfolded'' in order to determine the generalized eigenvectors in the full space of operators. We remark that the null space is also the noisiest part of the linear system. 
+\par
+The removal of the null space from the linear system has the effect of allowing us to extend $t_0$ to larger values for the lightest $\mathrm{dim}(C) - \mathrm{nreset}(t_0)$ states (where $\mathrm{nreset}(t_0)$ is the number of singular values at $t_0$). Further given that the variational solution is only reliable for a moderate portion of the lightest $\mathrm{dim}(C)$ states, larger values of $t_0$ allow for the correlation matrix to become more fully saturated by the states that we hope to be able to extract.  Stated simply, Cholesky Decomposition fails before $t_0$ is saturated due to the statistical noise, SVD removes precisely this null/noisy space from the linear system which causes failure.
+\par
+We now return to the importance of $t_0$ in the extraction of the spectrum and construction of a linear combination of operators to best describe an eigenstate of the Hamiltonian. We commented earlier that naively one would hope to be able to keep pushing $t_0$ to larger values to suppress the contribution of states larger than $\mathrm{dim}(C)$.  This is complicated by the fact that noise tends to increase for larger values of $t_0$.  We would like to have some criterion to judge what $t_0$ is the best choice. Examining Equation \ref{eqn:C_ij} we see that after extracting the spectrum and overlap factors we should be able to reconstruct the Correlator Matrix based on the fits (discussed later). One method of describing the ``goodness'' of the fit is to examine how well the elements of the reconstructed Correlator Matrix describe the true Correlator Matrix.  This is done by defining a $\chi^2$-like quantity \cite{dudek08}
+\begin{align}
+\label{eqn:chisq}
+\chi^2 &= \frac{1}{\frac{1}{2}N\left(N+1\right)\left(t_{max}-t_0\right) -\frac{1}{2}N\left(N+3\right)} \notag\\
+&\times\sum_{i,j\ge i}\sum_{t,t^{\prime}=t_0+1}^{t_{max}}\left(C_{ij}(t) - C_{ij}^{recon.}(t)\right)\mathbb{C}_{ij}^{-1}(t,t^{\prime}) \notag\\
+&\times\left(C_{ij}(t^{\prime}) - C_{ij}^{recon.}(t^{\prime})\right).
+\end{align}
+Where $N = \mathrm{dim}(C)$ and $\mathbb{C}$ is the timeslice covariance matrix for the correlator element $C_{ij}$. 
+\par
+In practice the generalized eigenvectors are not constant in time.  We use the same $\chi^2$ method to determine the optimal timeslice, $t_z \geq t_0$, from which to extract the eigenvectors. This is reasonable as for $t_Z \geq t_0$ we already expect the Correlation Matrix to be saturated by the lowest $\mathrm{dim}(C)$ states.  We also find in practice that for $t_Z \geq t_0$ the values $Z_i^n(t)$ are relatively flat within uncertainty. 
+\par
+Returning to the generalized eigenvalue problem, Equation \ref{eqn:gen_eig}, we see that we are able, using one of the previously mentioned methods, to solve for the generalized eigenvalues, $\Lambda(t)$. The $\Lambda(t)$ are also commonly referred to as principal correlators. They can be shown to behave asymptotically as \cite[Appendix A]{luscher90}
+\begin{equation*}
+\Lambda_n(t) = e^{-m_n\left(t - t_0\right)}\left(1+\mathcal{O}\left(e^{-\delta m\left(t - t_0\right)}\right)\right),
+\end{equation*}
+where $\delta m$ is the absolute value of the mass gap between state $n$ and the next closest state, $\delta m = min_{l\neq n}\left| m_n - m_l\right|$.  
+The spectrum is then extracted by fitting the principal correlators to the form 
+\begin{equation}
+\label{fitform}
+\Lambda_n(t) = \left(1-A_n\right)e^{-m_n\left(t - t_0\right)} + A_ne^{-m_n^{\prime}\left(t - t_0\right)}.
+\end{equation}
+
+The fit parameters are $A_n$, $m_n$, and $m_n^{\prime}$.  The second exponential is used in order to stabilize the fit for low timeslices where the Correlation Matrix is yet to be saturated by the lowest $\mathrm{dim}(C)$ states. We find in practice that the second exponential decays rapidly for large values of $t_0$ and can be thought of as the contributions from excited states whose masses are larger than $m_{\mathrm{dim}(C)}$.  The parameters $A_n$ and $m_n^{\prime}$ are only used in the fitting stage. It is worth noting the form of Equation \ref{fitform} is consistent with Equation \ref{eqn:gen_eig}, namely $\Lambda(t=t_0) = \mathbb{1}$.
+\par
+Figure \ref{fig:prinCorrTyp} is a plot of $\Lambda_n(t) \cdot e^{m_n(t - t_0)}$ for three states (ground, first excited and fifth excited) in the $T1$ irreducible representation of the octrahedral group (continuum spin $J = 1,3,4\cdots$).  We see a steep exponential falloff, the result of contribution from states with mass larger than $m_{\mathrm{dim}(C)}$, followed by a flat region in which the Correlation Matrix has become saturated by the states we wish to consider.  We also see an example of the increase in noise as we look further from the source point located at $t = 0$.
+\par
+The variational approach is also useful in identifying degenerate or near degenerate states.  The simplest thing one could imagine doing is ordering the generalized eigenvalues by size on each timeslice. However it is possible for there to be fluctuation between the sizes of the eigenvalues of near degenerate states which would add to the systematic uncertainty of the extracted spectrum. A more robust method would be to decide the ordering of states based on maximizing the overlap between the associate generalized eigenvectors.
+\par
+By enforcing the orthogonality of eigenvectors on differing timeslices we are able to remove the possibility of cross contamination between adjacent states. There are some subtleties associated with the use of the orthogonality relation between generalized eigenvectors. Namely since the computer doesn't know it is solving an ensemble problem and there is an overall phase ambiguity associated with the eigenvectors it is possible (and frequent in practice) for each eigenvector to have some phase associated with it leftover from the eigensolver routines. This problem is solved by enforcing an arbitrary phase convention where the largest element by modulus is defined to be real and positive. In the event of eigenvectors with multiple principal components of near equal length this convention could be in principle problematic. 
+\par
+By enforcing a phase convention on the generalized eigenvectors we have also removed any possible phase ambiguity on the overlaps defined in Equation \ref{eqn:Z}. 
+\par
+
+Figure \ref{fig:ZTyp} depicts typical overlaps extracted on each timeslice.  We see, similar to the Principal Correlator Plots in Figure \ref{fig:prinCorrTyp}, a curvature at low values of $t$ associated with contributions from states with mass larger than $m_{\mathrm{dim}(C)}$. The curved region is the followed by a flat region in which the Correlator Matrix has been saturated by the lightest $\mathrm{dim}(C)$ states. 
+\par
+The curved region can be understood more fully with appeal to Equation \ref{eqn:Z}.  We see that the only explicit time dependence that should enter the calculation is in the decaying exponentials of the lightest states. However the generalized eigenvectors are defined according to $C(t)V(t) = C(t_0)V(t)\Lambda(t)$. Two things can go wrong, the first is to choose $t_0$ too small in which case we are  effectively introducing and enforcing an incorrect orthogonality relationship. We don't have enough operators to span the effective space of the Hamiltonian at $t_0$. In this case any solution is simply wrong. 
+\par
+The second problem which can occur is looking at $V(t)$ for $t < t_0$.  In this case the generalized eigenvector will not be a good approximation to an eigenstate of the Hamiltonian as it will ``see'' contribution from states with mass larger than $m_{\mathrm{dim}(C)}$. This effect is manifested in the curvature of $Z_i^n(t)$, the operator becomes more or less important in the linear combination of operators representing the eigenstate of the Hamiltonian as we approach the region where our basis of operators is able to span the effective space of the Hamiltonian. Once our assumption of saturation is realized $t \geq t_0$ we see the overlap values are flat. In practice we only extract the overlaps from this flat region.
+

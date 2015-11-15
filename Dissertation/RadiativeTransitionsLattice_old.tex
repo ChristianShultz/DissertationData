@@ -1,0 +1,106 @@
+\chapter{Radiative Transitions on the lattice} \label{chap::radTranLattice}
+
+In this chapter we first introduce radiative transition matrix elements and show how they can be decomposed into kinematic factors, transforming with the symmetries of the vector current, multiplying scalar form factors which encode the dynamics of the transition. On the lattice these matrix elements are encoded in three-point functions which feature a local vector current insertion appearing between mesonic creation and annihilation operators. 
+
+By performing a spectral decomposition of the three-point functions, we ill find, in a manner similar to our two point calculation,  that any three-point function in principal contains contributions from all states that have the same quantum numbers as the source and sink operators. Each contribution will propagate through Euclidean time and contribute a factor of $e^{-Et}$ such that for large times only the lights state survives. In general we will also be interested in the excited state matrix elements, their contributions arising from subleading exponentially damped contributions. In order to circumvent this problem we will introduce `optimal' operators, as linear combinations of operators within our basis, which we will show dominantly produce a \emph{single} state. In this manner we will be able to project out the excited state contributions of interest. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Form-factors and Transitions \label{sec::formfactor}}
+
+
+ The theoretical object we wish to extract is the radiative transition form factor which governs the strength with which the photon couples to any given transition. In general one writes the matrix element as a sum over products of kinematic factors, transforming with the symmetries of the current, times an unknown coupling which is a function of the photon virtuality, the form factor. For example when one calculates the form factor of a pseudoscalar meson such as the pion a convenient parameterization of the matrix element is 
+\begin{equation*}
+\langle \pi (p^\prime) | j^\mu | \pi (p) \rangle = \left( p^\prime + p\right)^\mu F_\pi(Q^2)
+\end{equation*}
+which transforms under parity in the same way as the matrix element. The careful reader will realize that there is another independent kinematic factor which could appear in the decomposition, namely, $  \left( p^\prime - p\right)^\mu F^{[-]}_\pi(Q^2) $, which also transforms correctly under rotations and parity. This quantity can be eliminated via the constraint imposed from current conservation.
+
+In this analysis we consider formfactors and transitions between meson states of integer angular momentum $J$. Form-factors are accessed via vector current matrix elements in which the current appears sandwiched between meson states  that have been projected onto definite momentum $\vec{p}$ and helicity $\lambda$.  A general parameterization of such a matrix element is 
+
+\begin{equation*}
+\langle  J^\prime\lambda^\prime\vec{p}^\prime | j^\mu | J \lambda \vec{p} \rangle = \sum_i K^\mu_i(J^\prime,\lambda^\prime,\vec{p}^\prime;J,p,\lambda)F_i(Q^2) \label{eqn::genericDecomposition}
+\end{equation*}
+where $K^{\mu}_i$ is a kinematic factor which transforms in the same way as the matrix element and $Q^2$ is the virtuality of the photon ($q = p^\prime -p$, $Q^2 = -Q^2$). 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Decomposing Vector current matrix elements}
+
+We addopt a straightforward approach in which we write down the most general Lorentz covariant and parity invariant decoposition of a divergence free current in terms of a number of arbitray form factors. It is convenient in this approach to use the $z$-component of the spin which is not in general equal to the helicity and which we denote by $r$. The choice of using $j_z$ makes the transformation properties of the polarization tensors simpler, one can derive a similar result using a helicity representation. As an illustrative example we demonstrate the method for an axial-vector vector transition relevant to a process such as $a_1 \rightarrow \rho \gamma$.   The most general set of kinematic factors one could write down for such a transition is 
+
+\begin{align*}
+\langle A(p^\prime,r^\prime) | &j^\mu | V(p,r) \rangle \\
+&= A_1(Q^2) \epsilon^{*\mu}(p^\prime,r^\prime)\epsilon_\alpha(p,r)p^{\prime\alpha} \\ 
+&+ A_2(Q^2) \epsilon^\mu(p,r) \epsilon^*_\alpha(p^\prime,r^\prime)p^\alpha \\
+&+ A_3(Q^2)p_+^\mu \epsilon^*_\alpha(p^\prime,r^\prime)\epsilon^\alpha(p,r) \\
+&+ A_4(Q^2) q^\mu \epsilon^*_\alpha(p^\prime,r^\prime)\epsilon^\alpha(p,r) \\
+&+ B_1(Q^2) \epsilon^{\mu\nu\rho\sigma}\epsilon^*_\nu(p^\prime,r^\prime)\epsilon_\rho(p,r)q_\sigma \\
+&+ B_2(Q^2) \epsilon^{\mu\nu\rho\sigma}\epsilon^*_\nu(p^\prime,r^\prime)\epsilon_\rho(p,r)p_{+\sigma} \\
+& + B_3(Q^2) \epsilon^{\mu\nu\rho\sigma}\epsilon^*_\nu(p^\prime,r^\prime)p_{+\rho}q_\sigma \epsilon_\alpha(p,r)p^{\prime\alpha} \\
+& + B_4(Q^2) \epsilon^{\mu\nu\rho\sigma}\epsilon_\nu(p,r)p_{+\rho}q_\sigma \epsilon^*_\alpha(p^\prime,r^\prime)p^\alpha.
+\end{align*}
+In which we have chosen to use the basis $p_+ = p^\prime + p$, and $q = p^\prime -p$ for the momenta. 
+
+Parity invariance requires that 
+\begin{align*}
+\langle A(p^\prime,r^\prime) | j^\mu | V(p,r) \rangle &= \langle A(p^\prime,r^\prime) | \mathcal{P}^{-1} \mathcal{P} j^\mu \mathcal{P}^{-1} \mathcal{P}| V(p,r) \rangle \\
+& = - \left[ \mathcal{P} \right]^\mu_\nu  \langle A(-p^\prime,r^\prime) | j^\nu | V(-p,r) \rangle
+\end{align*} 
+Where we have used the fact that under parity our states transform as $\mathcal{P} | A(p,r)\rangle = |A(-p,r)\rangle $, $\mathcal{P} | V(p,r)\rangle = -|V(-p,r)\rangle $, and $\mathcal{P} j^\mu\mathcal{P}^{-1}  = \left[ \mathcal{P}^{-1} \right]^\mu_\nu j^\nu$ \footnote{  \unexpanded{$ \left[ \mathcal{P}^{-1} \right]^\mu_\nu  = \left[ \mathcal{P} \right]^\mu_\nu  = \mathrm{diag}(+---)$ } } . Using the fact that $\epsilon^\mu(-p,r) = - \left[\mathcal{P}\right]^\mu_\nu \epsilon^\nu(p,r)$ we see that the above decomposition is invariant under parity provided $A_i(Q^2) =0$. 
+Current conservation provides an additional constraint on the decomposition, 
+\begin{align*} 
+&0 = \partial_\mu \langle A(p^\prime,r^\prime) | j^\mu | V(p,r) \rangle \\
+\Rightarrow \quad & 0 = q_\mu \langle A(p^\prime,r^\prime) | j^\mu | V(p,r) \rangle
+\end{align*}
+which implies that $B_2(Q^2) = 0$. Using these tools we arrive at the parity invariant Lorentz covariant parameterization of the axial-vector vector transition matrix element 
+\begin{align*}
+\langle A(p^\prime,r^\prime) |j^\mu | V(p,r) \rangle &= B_1(Q^2) \epsilon^{\mu\nu\rho\sigma}\epsilon^*_\nu(p^\prime,r^\prime)\epsilon_\rho(p,r)q_\sigma \\
+& + B_3(Q^2) \epsilon^{\mu\nu\rho\sigma}\epsilon^*_\nu(p^\prime,r^\prime)p_{+\rho}q_\sigma \epsilon_\alpha(p,r)p^{\prime\alpha} \\
+& + B_4(Q^2) \epsilon^{\mu\nu\rho\sigma}\epsilon_\nu(p,r)p_{+\rho}q_\sigma \epsilon^*_\alpha(p^\prime,r^\prime)p^\alpha
+\end{align*}
+
+The form-factors appearing in this expression are basis dependent quantities arising from the ambiguity involved in decomposing matrix elements of the vector current between final and initial mesonic states. For example $p$ and $p^\prime$ are an equally valid set of variables to use in the decomposition (as opposed to our choice of $p_+$ and $q$) but would lead to a different definition of the form-factors $B_i(Q^2)$. In general one is also free to perform a linear transformation on the $K^{\mu}_i$ as $\tilde{K}^\mu_i = L_{ij}K^\mu_j$, which in turn causes a redefinition of the $F_i$. Further in the case that one wants to compare results between two different calculations using different bases it is nececessary to construct the mapping, $L$, which in the case of several form-factors becomes algebraically cumbersome.
+
+ 
+A conventional parameterization for the matrix elements is the Multipole Expansion introduced earlier in \chapref{chap::QM}. For convenience of calculation we work with an arbitrary set of form-factors which we then eliminate in favor of the multipole form-factors where appropriate. This is done in direct analogy with \fcite{durand,dudek09charm}.
+
+We now proceed to sketch the derivation\footnote{A more complete description can be found in \fcite{durand}}. Defining the vertex function in the Breit frame ($\vec{p} = |p|\hat{z}$ , $\vec{p^\prime} = -\vec{p}$) 
+\begin{align*}
+\Gamma_{J^\prime\lambda^\prime;J\lambda}^\nu &= \langle J^\prime \lambda^\prime p^\prime | e^{i \pi J_2} j^\nu | J \lambda  p\rangle = \langle J^\prime \lambda^\prime| e^{i\xi_{p^\prime} K_3} e^{i \pi J_2} j^\nu e^{-i\xi_p K_3}  | J \lambda  \rangle
+\end{align*}
+where the operator $e^{i\xi_p K_3}$ acting on a rest state effects to boost the state along the $z$-axis to momentum $p\hat{z}$. One can show that this matrix element can be reexpressed as a sum over matrix elements of tensors which transform irreducably under the rotation group -- this is the esscence of the multipole decomposition. Each tensor appearing in the decomposition also independently satisfies the Wigner-Eckart Therom allowing us to solve for the reduced matrix elements which we identify as the various multipole moments of the system. Our construction is identical to Durand's and we refer the reader to [EMPTY] for further details. 
+
+The longitudianal and transverse components of the vector current transform differently under rotations and one must allow for a different set of reduced matrix elements for each. In the Breit frame the scalar and $z$ component are linked through current conservation as $(E^\prime - E ) \Gamma_{J^\prime\lambda^\prime;J\lambda}^0 = -2p_z \Gamma_{J^\prime\lambda^\prime;J\lambda}^3$ and one can reconstruct the charge moments using only the scalar portion of the vertex function as
+\begin{equation}
+ \Gamma_{J^\prime\lambda^\prime;J\lambda}^0 = \left(-1\right)^{2J^\prime} \sum_k \begin{pmatrix} 
+ J^\prime & k & J \\
+ \lambda^\prime & 0 & \lambda 
+ \end{pmatrix} \langle J^\prime || T^k_0 || J \rangle  \bigg|_{(-1)^k = \delta P}
+\end{equation}
+where the variable $\delta P$ is the product of the initial and final parities. A similar expression for the transverse components may be derived, one obtains 
+
+\begin{equation}
+ \Gamma_{J^\prime\lambda^\prime;J\lambda}^\pm = \left(-1\right)^{2J^\prime} \sum_{k=1}
+  \begin{pmatrix} J^\prime & k & J \\
+ \lambda^\prime & \pm & \lambda  \end{pmatrix} 
+ \langle J^\prime || T^k_\pm || J \rangle  .
+\end{equation}
+
+We remind the reader here that in the case of identical particles the sum ocurring above is restriced to odd values of $k$. A conventional redefinition of the reduced matrix elements is 
+\begin{align*}
+ \langle J^\prime || T^k_\pm || J \rangle &= \frac{1}{2}\left[ \left(1 + (-1)^k\delta P\right)E_k + \left(1 - (-1)^k \delta P M_k \right) \right] \\
+  \langle J^\prime || T^k_0 || J \rangle &= \frac{1}{2} \left(1 + (-1)^k\delta P\right)C_k 
+\end{align*} 
+where E(M)[C] indicate electric(magnetic)[charge] multipole elements. The variable $\delta P$ is the product of the initial and final state parity. 
+
+Returning now to our axial-vector vector example we see that the $B_i(Q^2)$ are linear combinations of $C_1$, $E_1$, and $M_2$ multipole form-factors. Using the above machinery one can construct a linear system featuring the multipole elements we wish to extract and the arbitrary form-factors, $B_i$, that feature in our decomposition that we wish to eliminate. 
+
+
+
+
+
+
+

@@ -1,0 +1,105 @@
+\chapter{Methods}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ 
+\section{Grassman Numbers}\label{app::grassman}
+The generators of an n-dimensional Grassman Algebra obey the anti-commutation relation 
+\begin{equation*}
+\{G_i,G_j\} \equiv G_iG_j + G_jG_i = 0 \qquad G_i^2 = 0
+\end{equation*}
+where $i,j=1,2,...,n$. Because of the anti-commutation relation the expansion of any function defined on a finite Grassman Algebra contains only a finite number of terms (any term quadratic or higher in a single generator is zero). We define integration of Grassman quantities as 
+\begin{equation*}
+\int dG_i = 0 \qquad \int dG_iG_i = 1 \qquad \{G_i,dG_j\} = 0 \qquad \{dG_i,dG_j\} = 0
+\end{equation*}
+For example let $g$ and $\bar{g}$ be independent Grassman quantities, then 
+\begin{equation*}
+\int dg = \int d\bar{g} = 0 \qquad \int dgg = \int d\bar{g}\bar{g} = 1.
+\end{equation*}
+Since $gg = \bar{g}\bar{g} = 0$ we see 
+\begin{equation*}
+e^{g\bar{g}} = 1 + g\bar{g}
+\end{equation*}
+and thus 
+\begin{align*}
+\int dgd\bar{g}e^{g\bar{g}} &= \int dgd\bar{g} + \int dgd\bar{g} g\bar{g} \notag \\
+&= 0 - \int dgg d\bar{g}\bar{g} \notag \\
+&= -1
+\end{align*}
+Where we have used the relation $\{G_i,dG_j\} = 0$ to pick up the minus sign in the second line. Now we consider a two dimensional case, 
+\begin{equation*}
+g = \left(\begin{array}{c} g_1 \\ g_2 \end{array} \right), \qquad \bar{g} = \left(\begin{array}{c} \bar{g}_1 \\ \bar{g}_2 \end{array}\right), \qquad g^T\bar{g} = g_1\bar{g}_1 + g_2\bar{g}_2
+\end{equation*}
+Then one can verify that 
+\begin{equation*}
+e^{-g^T\bar{g}} = 1 - (g_1\bar{g}_1 + g_2\bar{g}_2) + g_1\bar{g}_1g_2\bar{g}_2.
+\end{equation*}
+Defining the integration rule $dgd\bar{g} = dg_1d\bar{g}_1dg_2d\bar{g}_2$ we see then that 
+\begin{equation*}
+\int dgd\bar{g}e^{-g^T\bar{g}} = 1.
+\end{equation*}
+Performing a change of variables $g = M\xi$ and $\bar{g} = M^{\prime}\bar{\xi}$ then 
+\begin{equation*}
+\left(\begin{array}{c} g_1 \\ g_2 \end{array}\right) = 
+\left(\begin{array}{cc} M_{11} & M_{12} \\ M_{21} & M_{22} \end{array} \right) 
+\left(\begin{array}{c} \xi_1 \\ \xi_2 \end{array} \right) =
+\left(\begin{array}{c} M_{11}\xi_1 + M_{12}\xi_2 \\ M_{21}\xi_1 + M_{22}\xi_2 \end{array} \right).
+\end{equation*} 
+So then we can compute 
+\begin{align*}
+g_1g_2 &= (M_{11}\xi_1 + M_{12}\xi_2)(M_{21}\xi_1 + M_{22}\xi_2) \notag \\
+&= M_{11}M_{22}\xi_1\xi_2 + M_{12}M_{21}\xi_2\xi_1 \notag \\
+&= M_{11}M_{22}\xi_1\xi_2 - M_{12}M_{21}\xi_1\xi_2 \notag \\
+&= \mathrm{det}(M)\xi_1\xi_2. 
+\end{align*}
+In order to preserve integration under change of variables then we require
+\begin{equation*}
+\int dg_1dg_2g_1g_2 = \int d\xi_1 d\xi_2 \xi_1 \bar{\xi}_2 \quad \longrightarrow \quad dg_1dg_2 = \mathrm{det}(M)^{-1}d\xi_1d\xi_2.
+\end{equation*}
+It follows by substitution that 
+\begin{equation*}
+1 = \int dgd\bar{g}e^{-g^T\bar{g}} = (\mathrm{det}(M^T)\mathrm{det}(M^{\prime}))^{-1} \int d\xi d\bar{\xi}e^{\xi^TM^TM^{\prime}\bar{\xi}}.
+\end{equation*}
+Defining $\tilde{M}\equiv M^TM^{\prime}$ and using the relations $\mathrm{det}(M^T) = \mathrm{det}(M)$ and $\mathrm{det}(AB) = \mathrm{det}(A)\mathrm{det}(B)$ we find 
+\begin{equation*}
+\int d\xi d\bar{\xi}e^{\xi^T\tilde{M}\bar{\xi}}  = \mathrm{det}(\tilde{M}).
+\end{equation*}
+This formula generalizes to the case where $\xi$ and $\bar{\xi}$ are vectors of arbitrary length.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Single Elimination Jackknife Statistics \label{App:jack}}
+Given some statistical sample $y_i \in \left\{{Y}\right\}$ the mean and variance are defined
+\begin{align*}
+\bar{y} &= \frac{1}{N}\sum_i^Ny_i \\
+var(y) &= \frac{1}{N}\sum_i^N \left(y_i - \bar{y}\right)^2
+\end{align*}
+In order to propagate the error using the jackknife method one takes the sample $y_i$ in what is called ensemble data format (a list of samples) and converts it to the jackknife format by
+\begin{align*}
+y^{jack.}_i &= \frac{1}{N-1}\sum_{j\ne i}^N y_j \\
+&= \bar{y} - \frac{1}{N-1}\left(y_i - \bar{y}\right).
+\end{align*}
+By inspection one realizes that the jackknife rescaled data will have the same mean as the ensemble format data. The effect is to scale down the fluctuations by a factor of $\frac{1}{N-1}$.  One then calculates some function of the samples in the jackknife format and then inverts the rescaling to obtain the distribution in the ensemble format.
+\begin{align*}
+f^{jack.}_i &= g\left(y^{jack.}_i,z^{jack.}_i,\cdots\right)\\
+f_i &= \bar{f} - \frac{1}{N-1}\left(f_i^{jack.}-\bar{f}\right)
+\end{align*}
+The variance of the ensemble of samples $f_i$ is then given by the standard formula.
+
+
+
+
+
+
+
